@@ -1,18 +1,18 @@
 <div class="comment-form">
-    <h5>Ajouter un commentaire</h5>
-    <div class="comment-form" method="post" action="{{ site.site_url~'/wp-comments-post.php' }}">
+    <h3>Ajouter un commentaire</h3>
+    <form class="comment-form" method="post" action="{{ site.site_url~'/wp-comments-post.php' }}">
         {% if  user %}
             <input type="hidden" name="email" value="{{ user.email }}">
             <input type="hidden" name="author" value="{{ user.name }}">
             <input type="hidden" name="url" value="{{ user.link }}">
         {% else %}
             <div class="form-group">
-                <label>Adresse email (*)</label>
+                <label>Adresse email</label>
                 <input name="email" type="email" id="email" class="form-control" placeholder="Votre email..." required>
             </div>
 
             <div class="form-group">
-                <label>Prénom & Nom ou Pseudonyme (*)</label>
+                <label>Prénom & Nom ou Pseudonyme</label>
                 <input type="text" class="form-control" id="author" name="author" placeholder="Saisir..." required>
             </div>
 
@@ -23,16 +23,11 @@
 
         {% endif %}
 
-            <label>Commentaire (*)</label>
-
-            <textarea placeholder="Leave a comment..." name="comment" style="width: 100%; height: 50px; border-radius: 4px;" required></textarea>
-
-        </form>
+        <textarea placeholder="Leave a comment..." name="comment" required style="width: 100%; height: 50px; border-radius:4px;"></textarea>
 
         <input name="comment_post_ID" value="{{ post.id }}" type="hidden">
         <input name="comment_parent"  value="{{ comment.ID|default('0') }}" type="hidden">
         <button type="submit" name="Submit" class="btn btn-primary btn-lg">Envoyer</button>
-        <button type="reset" class="btn btn-danger btn-lg">Annulé</button>
-        <p>Your comment will be revised by the site if needed.</p>
+        <p><i>Le commentaire peut-être modifié par le propriétaire du site.</i></p>
     </form>
 </div>
