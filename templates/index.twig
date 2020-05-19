@@ -19,7 +19,7 @@
 	<div style="padding-left:30px;">
 	{% if dates is iterable %}
 		{% for date in dates %}
-			Hello {{ date.name }}!
+			<a href="{{ dates.link }}">{{ dates.name }}</a>
 		{% endfor %}
 	{% else %}
 		{# dates is probably a string #}

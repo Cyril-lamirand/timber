@@ -27,7 +27,6 @@ $context['categories'] = $categories;
 
 
 $context['dates'] = new TimberArchives( array('type' => 'yearly' ));
-var_dump($context['dates']);
 
 if ( is_home() ) {
 	array_unshift( $templates, 'front-page.twig', 'home.twig' );
