@@ -1,33 +1,19 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<h2>Articles</h2>
-	<p>{{ qux }}</p>
-	<div class="row" style="padding-left:30px;">
-	{% for post in posts %}
-		{% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
-	{% endfor %}
+	<div class="text-center">
+		<h2 class="mt-20">Articles</h2>
 	</div>
-	<h2>Categories</h2>
-	<div style="padding-left:30px;">
-		{% for cat in categories %}
-			<li {% if term.slug == cat.slug %}class="active"{% endif %}><a href="{{blog.link}}category/{{cat.slug}}">{{cat.name}}</a></li>
+	<hr>
+	<!-- <p>{{ qux }}</p> -->
+
+	<div class="row-extended">
+		{% for post in posts %}
+			{% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
 		{% endfor %}
 	</div>
 
-	<h2>Year</h2>
-	<div style="padding-left:30px;">
-	{% if dates is iterable %}
-		{% for date in dates %}
-			<a href="{{ dates.link }}">{{ dates.name }}</a>
-		{% endfor %}
-	{% else %}
-		{# dates is probably a string #}
-		<a href="{{ dates.items[0]["link"] }}">{{ dates.items[0]["name"] }}</a>
-	{% endif %}
-		
-	</div>
 
-	
+	<hr>
 	{% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
 {% endblock %}

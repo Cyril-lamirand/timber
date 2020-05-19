@@ -1,15 +1,14 @@
 {% extends "tease.twig" %}
 
 {% block content %}
-<div class="card" style="width: 18rem;border: double thick gold; box-shadow: 10px 10px 5px grey">
-{% if post.thumbnail.src %}
-  <img src="{{post.thumbnail.src}}" class="card-img-top" alt="...">
-  {% endif %}
-  <div class="card-body" style="border: double thick orange">
-    <h5 class="card-title"><a href="{{post.link}}">{{post.title}}</a></h5>
-    <p class="card-text">{{post.preview.length(25)}}</p>
-    <a href="{{post.link}}" class="btn btn-primary">Vers l'article</a>
-  </div>
-</div>
-
-{% endblock %}
+    <div class="card" style="width: 100%;">
+      {% if post.thumbnail.src %}
+        <img src="{{post.thumbnail.src}}" class="card-img-top" alt="...">
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title"><a href="{{post.link}}">{{post.title}}</a></h5>
+        <p class="card-text">{{post.preview.length(25)}}</p>
+        <a href="{{post.link}}" class="btn btn-primary">Vers l'article</a>
+      </div>
+    </div>
+ {% endblock %}

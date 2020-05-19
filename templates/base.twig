@@ -10,41 +10,44 @@
 		<header class="header" >
 			{% block header %}
 				<div class="wrapper">
-					<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+					<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	 					<h2><a class="navbar-brand" href="{{site.url}}">{{site.name}}</a></h2>
 						{% include "menu.twig" with {'items': menu.get_items} %}
 						<div class="content-wrapper searchbar">
 							<form method="get" role="search" action="{{ site.url }}">
-							<input type="text" placeholder="Enter Keywords..." name="s">
-							<input type="submit" value="Search" class="submit button--green">
+							<input type="text" placeholder="Saisir..." name="s">
+							<input type="submit" value="Recherche" class="submit button--green">
 							<input type="hidden" name="post_type" value="post">
 							</form>
 						</div>
-					</nav><!-- #nav -->
+					</nav>
 				</div>
 			{% endblock %}
 		</header>
 
 		<section id="content" role="main" class="content-wrapper">
-			{% if title %}<h1>{{title}}</h1>{% endif %}
-			<div class="wrapper {{sidebar_class}}">
-				{% block content %}
-					Sorry, no content
-				{% endblock %}
+			<div class="container">
+				{% if title %}<h1>{{title}}</h1>{% endif %}
+
+					{% block content %}
+						Sorry, no content
+					{% endblock %}
+
+				{% if sidebar %}
+					<aside class="layout-sidebar">
+						{{sidebar}}
+					</aside>
+				{% endif %}
 			</div>
-			
-			{% if sidebar %}
-				<aside class="layout-sidebar">
-					{{sidebar}}
-				</aside>
-			{% endif %}
 		</section>
 
 		{% block footer %}
-			<footer id="footer">
-				{% include 'footer.twig' %}
-			</footer>
-			{{ function('wp_footer') }}
+			<div class="container">
+				<footer id="footer">
+					{% include 'footer.twig' %}
+				</footer>
+				{{ function('wp_footer') }}
+			</div>
 		{% endblock %}
 		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

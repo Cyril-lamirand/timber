@@ -1,1 +1,56 @@
-<p class="footer">Copyright Devlab {{"now"|date('Y')}}</p>
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+        <div class="text-center">
+            <h2>Archives</h2>
+        </div>
+        <hr>
+        <h5>Catégories</h5>
+        {% for cat in categories %}
+            <li {% if term.slug == cat.slug %}class="active"{% endif %}><a href="{{blog.link}}category/{{cat.slug}}">{{cat.name}}</a></li>
+        {% endfor %}
+        <h5>Années</h5>
+        {% if dates is iterable %}
+            {% for date in dates %}
+                <a href="{{ dates.link }}">{{ dates.name }}</a>
+            {% endfor %}
+        {% else %}
+            {# dates is probably a string #}
+            <a href="{{ dates.items[0]["link"] }}">{{ dates.items[0]["name"] }}</a>
+        {% endif %}
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+        <div class="text-center">
+            <h2>Site Map</h2>
+        </div>
+        <hr>
+        <ul>
+            <li><a href="">Lien vers le site 1</a></li>
+            <li><a href="">Lien vers le site 2</a></li>
+            <li><a href="">Lien vers le site 3</a></li>
+        </ul>
+        <hr>
+        <h5>Lien(s) externe(s)</h5>
+        <ul>
+            <li><a href="">Lien externe 1</a></li>
+            <li><a href="">Lien externe 2</a></li>
+        </ul>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+        <div class="text-center">
+            <h2>Informations</h2>
+        </div>
+        <hr>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta doloremque, fugiat maxime minus nulla obcaecati officiis veritatis. Aliquam aliquid, animi dolorem facere, ipsam itaque nihil perferendis, quia saepe sed voluptas.</p>
+
+    </div>
+</div>
+<hr>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <div class="text-center">
+        <p class="footer">Copyright Devlab {{"now"|date('Y')}}</p>
+    </div>
+</div>
+
+
