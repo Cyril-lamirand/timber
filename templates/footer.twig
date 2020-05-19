@@ -5,15 +5,17 @@
         </div>
         <hr>
         <h5>Catégories</h5>
-        {% for cat in categories %}
-            <li {% if term.slug == cat.slug %}class="active"{% endif %}><a href="{{blog.link}}category/{{cat.slug}}">{{cat.name}}</a></li>
-        {% endfor %}
+        <ul>
+            {% for cat in categories %}
+                <li {% if term.slug == cat.slug %}class="active"{% endif %}><a href="{{blog.link}}category/{{cat.slug}}">{{cat.name}}</a></li>
+            {% endfor %}
+        </ul>
         <h5 class="mt-10">Années</h5>
         {% if dates is iterable %}
             <ul>
-            {% for date in dates %}
-                <li><a href="{{ dates.link }}">{{ dates.name }}</a></li>
-            {% endfor %}
+                {% for date in dates %}
+                    <li><a href="{{ dates.link }}">{{ dates.name }}</a></li>
+                {% endfor %}
             </ul>
         {% else %}
             <ul>
@@ -29,15 +31,17 @@
         </div>
         <hr>
         <ul>
-            <li><a href="">Lien vers le site 1</a></li>
-            <li><a href="">Lien vers le site 2</a></li>
-            <li><a href="">Lien vers le site 3</a></li>
+            <li><a href="/">Index</a></li>
+            <li><a href="">Blog</a></li>
+            <li><a href="">Politique de confidentialité</a></li>
         </ul>
         <hr>
-        <h5>Lien(s) externe(s)</h5>
+        <div class="text-center">
+            <h5>Lien(s) externe(s)</h5>
+        </div>
         <ul>
-            <li><a href="">Lien externe 1</a></li>
-            <li><a href="">Lien externe 2</a></li>
+            <li><a href="">Pôle Universitaire Leonard de Vinci</a></li>
+            <li><a href="">Institut de l'Internet et du Multimédia</a></li>
         </ul>
     </div>
 
