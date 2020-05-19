@@ -8,14 +8,18 @@
         {% for cat in categories %}
             <li {% if term.slug == cat.slug %}class="active"{% endif %}><a href="{{blog.link}}category/{{cat.slug}}">{{cat.name}}</a></li>
         {% endfor %}
-        <h5>Années</h5>
+        <h5 class="mt-10">Années</h5>
         {% if dates is iterable %}
+            <ul>
             {% for date in dates %}
-                <a href="{{ dates.link }}">{{ dates.name }}</a>
+                <li><a href="{{ dates.link }}">{{ dates.name }}</a></li>
             {% endfor %}
+            </ul>
         {% else %}
-            {# dates is probably a string #}
-            <a href="{{ dates.items[0]["link"] }}">{{ dates.items[0]["name"] }}</a>
+            <ul>
+                {# dates is probably a string #}
+                <li><a href="{{ dates.items[0]["link"] }}">{{ dates.items[0]["name"] }}</a></li>
+            </ul>
         {% endif %}
     </div>
 

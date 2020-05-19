@@ -2,16 +2,31 @@
 
 {% block content %}
 		<article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
-			<img class="img-fluid" src="{{ post.thumbnail.src|resize(1200, 300) }}">
+
+			<img class="img-fluid mt-20" src="{{ post.thumbnail.src }}">
+
+			<div class="text-center">
+				<small><i>Illustration de l'article...</i></small>
+			</div>
+
+			<hr>
+
 			<section class="article-content">
-				<h1 class="article-h1">{{ post.title }}</h1>
-				<a href="{{ post.link }}">{{ _e('edit') }}</a>
+
+				<div class="text-center">
+					<h1 class="article-h1">{{ post.title }}</h1>
+				</div>
+
+				<hr>
+
 				<p class="blog-author">
-					<span>By</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> <time datetime="{{ post.date|date('Y-m-d H:i:s') }}">{{ post.date }}</time>
+					<span>Par</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> <time datetime="{{ post.date|date('Y-m-d H:i:s') }}">{{ post.date }}</time>
 				</p>
+
 				<div class="article-body">
 					{{post.content}}
 				</div>
+
 			</section>
 
 			<!-- comment box -->
@@ -19,7 +34,7 @@
 				<!-- comments -->
 				<div class="comments">
 				    {% if post.comments %}
-						<h3> comments </h3>
+						<h2> Commentaires de l'article </h2>
 						{% for cmt in post.comments %}
 							{% include "comment.twig" with {comment:cmt} %}
 						{% endfor %}
